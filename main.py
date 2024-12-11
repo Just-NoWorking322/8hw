@@ -8,16 +8,16 @@ from handlers.order import register_order_handlers
 
 async def main():
     bot = Bot(token=token)
-    dp = Dispatcher(bot)
+    dp = Dispatcher()
 
-    # Регистрация обработчиков
     register_start_handler(dp)
     register_help_handler(dp)
     register_cancel_handler(dp)
     register_order_handlers(dp)
-
+    
     print("Бот запущен!")
-    await dp.start_polling()
+    await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())
+
